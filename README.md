@@ -1,4 +1,4 @@
-# Hisense-H-Link-Protocol
+# Hisense H-Link-Protocol
 
 # Project description 
 This project has the aim to reversee engineer the H-Link Protocol used in Hisense Therma units in order to gain direct control of the machines and not relying on Hisense cloud platform. An Home Assistant custom component will be developed too.
