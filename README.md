@@ -3,6 +3,29 @@
 # Project description 
 This project aims to reverse engineer the H-Link protocol used in the Hi-Therma unit lineup, allowing direct control of the machines without depending on the Hisense cloud platform.. A custom Home Assistant component will be developed too.
 
+* [[Communication Interface]]
+  * HOME BUS SYSTEM
+    * H-LINK DATA FRAME 
+  * Master Controller Interface
+    * Units
+      * SRC 33
+      * SRC 18
+  * Remote Controller Interface
+    * Units
+      * SRC 34
+      * SRC 35
+      * SRC 41
+      * SRC 47
+      * SRC 50
+      * SRC 57
+      * SRC 63
+      * SRC 146
+      * SRC 242
+      * SRC 243
+    * Request/Reply Analysis
+    * Messages by Unit
+
+
 ## System description
 
 Hisense Hi-Therma lineup is composed of both monobloc and split heatpumps. The unit I have under test is a 8kW monobloc type AHZ-080HCDS1.
