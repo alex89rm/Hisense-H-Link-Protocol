@@ -6,7 +6,7 @@ This project aims to reverse engineer the H-Link protocol used in the Hi-Therma 
 * H-NET PROTOCOL
   * Physical level
   * Data frame  
-* COMMUNICATION INTERFACES
+* [COMMUNICATION INTERFACES](docs/COMMUNICATION INTERFACES.md)
   * Master Controller Interface
     * Units
       * SRC 33
