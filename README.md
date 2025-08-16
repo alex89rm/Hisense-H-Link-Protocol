@@ -11,7 +11,7 @@ This project aims to reverse engineer the H-Link protocol used in the Hi-Therma 
     * Units
       * SRC 33
       * SRC 18
-  * Remote Controller Interface
+  * [Remote Controller Interface](docs/Remote_controller_interface.md)
     * Units
       * SRC 34
       * SRC 35
