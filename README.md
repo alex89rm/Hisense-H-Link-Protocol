@@ -23,7 +23,7 @@ This project aims to reverse engineer the H-Link protocol used in the Hi-Therma 
       * SRC 146
       * SRC 242
       * SRC 243
-  * [REMOTE CONTROL](docs/REMOTE_CONTROL.md)
+* [REMOTE CONTROL](docs/REMOTE_CONTROL.md)
 
 ## System description
 
