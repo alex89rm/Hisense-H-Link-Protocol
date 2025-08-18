@@ -3,7 +3,7 @@
 # Project description 
 This project aims to reverse engineer the H-Link protocol used in the Hi-Therma unit lineup, allowing direct control of the machines without depending on the Hisense cloud platform.. A custom Home Assistant component will be developed too.
 
-* H-NET PROTOCOL
+* [H-NET PROTOCOL](docs/H-NET_PROTOCOL.md)
   * Physical level
   * Data frame  
 * [COMMUNICATION INTERFACES](docs/COMMUNICATION_INTERFACES.md)
