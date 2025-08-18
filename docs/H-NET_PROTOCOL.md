@@ -4,6 +4,8 @@ The Hisense H-net protocol adopts the Home Bus System as its physical layer. Thi
 The network is arranged in a bus topology, with maximum lengths of 200 m in the standard version (ET-2101) and up to 1 km in the Extended Home Bus specification, which suits larger installations such as multi-apartment buildings or HVAC systems distributed across multiple floors.
 Data transmission is performed at 9.6 kbaud (±0.13%) using a baseband signaling technique. The encoding scheme is Alternative Mark Inversion (AMI) with negative logic and a 50% duty cycle: each logic “0” alternates the polarity between the two lines, H⁺ and H⁻, ensuring DC balance.
 
+![Frame](https://www.analog.com/en/_/media/analog/en/landing-pages/design-notes/introduction-to-home-bus/7224fig02.jpg)
+
 Defined thresholds ensure reliable symbol detection:
 * Logic “0” → 0.6 V (Vₗₗ)
 * Logic “1” → 1.4 V (receive) / 2.5 V (transmit)
