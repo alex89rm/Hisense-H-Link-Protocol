@@ -35,7 +35,10 @@ Messages are broadcasted on the bus: there is indeed no destination address I co
 |--|--|
 |xx|06|
 
-During my captures I never stumbled upon a NAK packet but I am confident the control byte could change to 0x15 — the standard ASCII code for NAK, as opposed to 0x06 which stands for ACK. This could lead to a retransmission of the corrupted message but it is just my guess. The message length is the total number of bytes transmitted, checksum included. The last byte is used for error detection and is computed using a simple XOR-based algorithm: the checksum starts with a 0x00 seed, performs a sequential XOR over all data bytes, and applies a final XOR with the source address. To figure out this I collected a good number of packets (~ 50) and I wrote a script to check with the most common checksum algorithms. Below is an implementation of the matching one in python :
+During my captures I never stumbled upon a NAK packet but I am confident the control byte could change to 0x15 — the standard ASCII code for NAK, as opposed to 0x06 which stands for ACK. This could lead to a retransmission of the corrupted message but it is just my guess. The message length is the total number of bytes transmitted, checksum included. 
+
+## Checksum Calculation
+The last byte is used for error detection and is computed using a simple XOR-based algorithm: the checksum starts with a 0x00 seed, performs a sequential XOR over all data bytes, and applies a final XOR with the source address. To figure out this I collected a good number of packets (~ 50) and I wrote a script to check with the most common checksum algorithms. Below is an implementation of the matching algorithm in python :
 
 ```python
 checksum = 0
