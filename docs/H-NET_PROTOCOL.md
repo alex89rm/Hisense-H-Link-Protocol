@@ -12,7 +12,7 @@ Bus arbitration uses Carrier Sense Multiple Access with Collision Detection (CSM
 Since no dedicated clock line exists, synchronization is handled through start-stop framing, similar to UARTs. Each transmitted character consists of 11 bits, sent least significant bit first, and includes even parity for error detection.
 
 
-# Data Frame
+## Data Frame
 On top of this physical medium, the H-net protocol defines its own data frame structure. Each message is encapsulated into a frame that includes synchronization, addressing, and integrity checks.
 A frame typically contains:
 * Start delimiter → used to identify the beginning of a transmission.
