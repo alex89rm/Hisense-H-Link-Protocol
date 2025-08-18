@@ -1,11 +1,34 @@
 
 ## Physical Level
-The Home Bus System, originally developed in Japan for residential automation, forms the physical layer foundation for various protocols—including Hisense’s H-net communication system, which adopts this medium to interconnect its HVAC units and controllers.
-The Home Bus relies on a single twisted-pair cable in a bus configuration. In the standard ET-2101 version, the maximum bus length is 200 meters, while the Extended Home Bus specification expands this to 1 kilometer, suitable for larger residential complexes or multi-apartment installations.
-A notable feature is that the same wire pair carries both data and power (up to 36 V). Power is coupled onto the bus inductively by the controller. The data lines, designated H⁺ and H⁻, invert their polarity with each transmitted bit, maintaining DC balance and ensuring stable operation regardless of common-mode voltage offsets.
-Communication operates at 9.6 kbaud ±0.13% using a baseband technique. Extended versions of the standard allow higher throughput. Data encoding uses Alternative Mark Inversion (AMI) with negative logic and a 50% duty cycle: each logic “0” toggles the line polarity between H⁺ and H⁻, opposite to conventional AMI.
-Signal thresholds are tightly defined: a logical “0” corresponds to 0.6 V (Vₗₗ), and a logical “1” corresponds to 1.4 V (receive) or 2.5 V (transmit) across the line pair. This ensures robust recognition of symbols across all devices on the bus.
-Bus access arbitration follows Carrier Sense Multiple Access with Collision Detection (CSMA/CD), similar to Ethernet, preventing data corruption when multiple devices attempt transmission simultaneously.
-Finally, the system uses start-stop framing—like UARTs—for synchronization, since there is no dedicated clock signal on the line. Each character frame is composed of 11 bits, transmitted least significant bit first, with even parity for error detection.
+The Hisense H-net protocol adopts the Home Bus System as its physical layer. This technology, originally developed in Japan for home automation, relies on a two-wire twisted pair bus capable of carrying both power (up to 36 V) and data simultaneously.
+The network is arranged in a bus topology, with maximum lengths of 200 m in the standard version (ET-2101) and up to 1 km in the Extended Home Bus specification, which suits larger installations such as multi-apartment buildings or HVAC systems distributed across multiple floors.
+Data transmission is performed at 9.6 kbaud (±0.13%) using a baseband signaling technique. The encoding scheme is Alternative Mark Inversion (AMI) with negative logic and a 50% duty cycle: each logic “0” alternates the polarity between the two lines, H⁺ and H⁻, ensuring DC balance.
+
+Defined thresholds ensure reliable symbol detection:
+* Logic “0” → 0.6 V (Vₗₗ)
+* Logic “1” → 1.4 V (receive) / 2.5 V (transmit)
+  
+Bus arbitration uses Carrier Sense Multiple Access with Collision Detection (CSMA/CD), preventing data corruption when multiple nodes attempt simultaneous communication.
+Since no dedicated clock line exists, synchronization is handled through start-stop framing, similar to UARTs. Each transmitted character consists of 11 bits, sent least significant bit first, and includes even parity for error detection.
+
 
 # Data Frame
+On top of this physical medium, the H-net protocol defines its own data frame structure. Each message is encapsulated into a frame that includes synchronization, addressing, and integrity checks.
+A frame typically contains:
+* Start delimiter → used to identify the beginning of a transmission.
+* Header → includes addressing information to identify source and destination nodes.
+* Payload → variable-length data field carrying commands, sensor values, or status information exchanged between indoor and outdoor units.
+* Checksum/CRC → ensures the integrity of the frame, allowing devices to detect corrupted transmissions.
+
+Frames are transmitted least significant bit first, following the UART-like start-stop convention inherited from the physical layer. The combination of parity at the character level and CRC at the frame level provides two layers of error detection, making the protocol robust against line disturbances typical of long twisted-pair cabling.
+
+|SOURCE ADDRESS|CONTROL BYTE| MESSAGE LENGTH (len) |PAYLOAD |	CHECKSUM |
+|--|--|--|--|--|
+|xx|	xx|	xx|	xx … xx	|xx |
+|1 Byte |	1 Byte | 1 Byte | (len – 4 )  Byte	| 1 Byte |
+
+Messages are broadcasted on the bus: there is indeed no destination address I could find. The control byte is used to acknowledge requests made on the bus: in this case the frame is composed only of the source address followed by a 0x06.
+
+|SOURCE ADDRESS|CONTROL BYTE|
+|--|--|
+|xx|06|
