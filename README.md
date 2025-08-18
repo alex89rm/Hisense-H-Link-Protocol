@@ -13,16 +13,16 @@ This project aims to reverse engineer the H-NET protocol used in the Hi-Therma u
       * SRC 18
   * [Remote Controller Interface](docs/Remote_controller_interface.md)
     * Units
-      * SRC 34
-      * SRC 35
-      * SRC 41
-      * SRC 47
-      * SRC 50
-      * SRC 57
-      * SRC 63
+      * [SRC 34](docs/Remote_controller_interface.md#address-34)
+      * [SRC 35](docs/Remote_controller_interface.md#address-35)
+      * [SRC 41](docs/Remote_controller_interface.md#address-41)
+      * [SRC 47](docs/Remote_controller_interface.md#address-47)
+      * [SRC 50](docs/Remote_controller_interface.md#address-50)
+      * [SRC 57](docs/Remote_controller_interface.md#address-57)
+      * [SRC 63](docs/Remote_controller_interface.md#address-63)
       * [SRC 146](docs/Remote_controller_interface.md#address-146)
-      * SRC 242
-      * SRC 243
+      * [SRC 242](docs/Remote_controller_interface.md#address-242)
+      * [SRC 243](docs/Remote_controller_interface.md#address-243)
 * [REMOTE CONTROL](docs/REMOTE_CONTROL.md)
 
 ## System description
