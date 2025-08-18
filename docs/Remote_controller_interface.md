@@ -12,7 +12,7 @@ Observing the traffic on the bus we can see there are different units. These are
 | 63 | Hi-Mit remote controller |
 | 34 |  |
 | 35 | Outodoor Unit |
-| [[#Address-146]] | Indoor Unit |
+| [[#address-146]] | Indoor Unit |
 | 242 |  |
 | 243 |  |
 
@@ -102,7 +102,7 @@ In the image above DSW8 ADDR is equal to 8+1 = **9**
 
 DSW1 field is thebynary encoded value set on the Hi-mit interface
 
-### ADDRESS 41 ( HI-MIT INTERFACE )
+### ADDRESS 41
 
 Request (KEEP ALIVE/ DISCOVERY ?) sent every 30s.
 | SRC | CTRL |LEN | | DSW1 ADDR | | | |CRC |
@@ -125,7 +125,7 @@ Request sent when there is a remote command.
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
 |41|0|48|202|160|1|1|107|62|0|8|0|11|12|45|24|0|0|26|28|28|28|28|28|28|28|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|51|
 
-## Address 146
+## ADDRESS 146
 Messages coming from 146 seems to be associated with machine operation parameters that could be stored in the INDOOR UNIT. This is the common header:
 
 |SRC | CTRL | LEN | DSW8 ADDR | - | DSW8 ADDR | - | OP | - | 
@@ -248,7 +248,7 @@ This message appears very rarely:
 
 |146|0|34|9|1|9|0|100|153|120|182|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|16|
 
-### ADDRESS 50 ( INDOOR UNIT )
+### ADDRESS 50
 | SRC | CTRL |LEN | DSW8 ADDR | - | DSW8 ADDR | - | - | CRC |
 |--|--|--|--|--|--|--|--|--|
 |50|0|9|1|1|1|0|240|248|
@@ -274,7 +274,7 @@ AMBIENT TEMP -> **COULD BE TEMP SENSOR INSIDE INDOOR UNIT REPORTING A SIMILAR VA
 REQUESTED PUMP PWM -> I THINK IT IS REQUESTED PWM BECAUSE WHEN VALUE IS 100 (PWM 100 MEANS OFF) SOMETIME THE PUMP IS STILL ON
 ?->CYCLE1 HEAT ON : 4 CYCLE 1 HEAT OFF: 0, CYCLE 1 COOL ON: 6, CYCLE 1 COOL OFF: 2
 
-### ADDRESS 35 ( OUTDOOR UNIT )
+### ADDRESS 35
 
 |SRC | CTRL | LEN | DSW8 ADDR | | DSW8 ADDR | | | | CRC |
 |--|--|--|--|--|--|--|--|--|--|
@@ -298,7 +298,7 @@ Message similar to the previous one with added 8 byte.
 
 |35|240|8|9|224|9|255|231| -> SENT WHEN THERE IS NO COMMUNICATION WITH OUDOOR UNIT ? LOOKS LIKE A DISCOVERY MESSAGE
 
-### ADDRESS 47 ( HI-MIT INTERFACE )
+### ADDRESS 47
 
 Unit 47 seems to send only this request that 242 replies to
 
@@ -306,7 +306,7 @@ Unit 47 seems to send only this request that 242 replies to
 |--|--|--|--|--|--|--|--|--|--|
 |47|0|10|202|160|1|1|108|0|12|
 
-### ADDRESS 57 ( HI-MIT INTERFACE )
+### ADDRESS 57
 
 This message is seen during device discovery
 
@@ -314,7 +314,7 @@ This message is seen during device discovery
 |--|--|--|--|--|--|--|--|--|--|
 |57|3|10|202|160|255|255|0|0|99|
 
-### ADDRESS 63 ( HI-MIT INTERFACE )
+### ADDRESS 63 
 Unit 63 seems to only send request that 243 replies to. No other messages are captured at this time.
 
 |SRC | CTRL |LEN | - | DSW1 ADDR | DSW8 ADDR | ? | ? |CRC |
@@ -325,13 +325,13 @@ Unit 63 seems to only send request that 243 replies to. No other messages are ca
 |--|--|--|--|--|--|--|--|--|
 |63|1|9|202|160|1|0|1|98|
 
-### ADDRESS 242 (UNKNOWN)
+### ADDRESS 242
 
 |SRC | CTRL | LEN | DSW8 ADDR | - | DSW8 ADDR | - | - | - | |WATER TEMP | | | CYCLE1 ROOM1 TEMP ? |  | | | | | | | CYCLE1 ROOM1 SET TEMP | | | | | | | | | | | WATER SET TEMP | | | | | | WATER PUMP SPEED | | WATER FLOW (1 digit) | | IDU CAPACITY? | ? | | ? | ? | CRC | 
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
 |242|0|48|1|1|1|1|108|62|0| **7** |129|129|27|0|0|0|0|0|0|0|22|0|0|0|0|0|0|0|20|60|50|20|24|12|129|129|0| **14** |3| **14** |0|24|2|4|1|1|111|
 
-### ADDRESS 243 (UNKNOWN)
+### ADDRESS 243
 Unit 243 seems to reply to 63 requests.
 |SRC | CTRL | LEN | DSW8 ADDR  | - | - | - | OP | | | | | | | | | | | FREQUENCY | | TARGET FREQUENCY | | OUTDOOR TEMP | | | | | | | DISCHARGER TEMP | | | | | | | | |  | | FREQUENCE | | | EVAP GAS TEMP | | | | CRC | 
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
