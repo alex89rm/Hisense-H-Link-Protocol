@@ -18,7 +18,7 @@ Since no dedicated clock line exists, synchronization is handled through start-s
 On top of this physical medium, the H-net protocol defines its own data frame structure. Each message is encapsulated into a frame that includes synchronization, addressing, and integrity checks.
 A frame typically contains:
 * Start delimiter → used to identify the beginning of a transmission.
-* Header → includes addressing information to identify source and destination nodes.
+* Header → includes addressing information to identify source and payload length.
 * Payload → variable-length data field carrying commands, sensor values, or status information exchanged between indoor and outdoor units.
 * Checksum/CRC → ensures the integrity of the frame, allowing devices to detect corrupted transmissions.
 
@@ -29,13 +29,18 @@ Frames are transmitted least significant bit first, following the UART-like star
 |xx|	xx|	xx|	xx … xx	|xx |
 |1 Byte |	1 Byte | 1 Byte | (len – 4 )  Byte	| 1 Byte |
 
-Messages are broadcasted on the bus: there is indeed no destination address I could find. The control byte is used to acknowledge requests made on the bus: in this case the frame is composed only of the source address followed by a 0x06.
+The control byte is used to acknowledge requests made on the bus: in this case the frame is composed only of the source address followed by a 0x06.
 
 |SOURCE ADDRESS|CONTROL BYTE|
 |--|--|
 |xx|06|
 
-During my captures I never stumbled upon a NAK packet but I am confident the control byte could change to 0x15 — the standard ASCII code for NAK, as opposed to 0x06 which stands for ACK. This could lead to a retransmission of the corrupted message but it is just my guess. The message length is the total number of bytes transmitted, checksum included. 
+According to "ET-2101 HBS Home Bus System" specification these are the available NAK codes:
+* 0x15 - Parity or FCC erroe
+* 0x11 - Receiving buffer full
+* 0x12 - Application failure
+
+During my captures I never stumbled upon a NAK packet so I cannot confirm it. This could lead to a retransmission of the corrupted message but it is just my guess. The message length is the total number of bytes transmitted, checksum included. 
 
 ## Checksum Calculation
 The last byte is used for error detection and is computed using a simple XOR-based algorithm: the checksum starts with a 0x00 seed, performs a sequential XOR over all data bytes, and applies a final XOR with the source address. To figure out this I collected a good number of packets (~ 50) and I wrote a script to check with the most common checksum algorithms. Below is an implementation of the matching algorithm in python :
