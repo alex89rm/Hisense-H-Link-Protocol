@@ -7,6 +7,7 @@ This project aims to reverse engineer the H-NET protocol used in the Hi-Therma u
   * [Physical Level](docs/H-NET_PROTOCOL.md#physical-level) 
   * [Data Frame](docs/H-NET_PROTOCOL.md#data-frame)
   * [Checksum Calculation](docs/H-NET_PROTOCOL.md#checksum-calculation)
+  * [Network Architecture](docs/H-NET_PROTOCOL.md#network-architecture)
 * [COMMUNICATION INTERFACES](docs/COMMUNICATION_INTERFACES.md)
   * Master Controller Interface
     * Units
