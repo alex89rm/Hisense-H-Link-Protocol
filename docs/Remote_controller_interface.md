@@ -62,6 +62,10 @@ When there is a change of the working mode on the master controller if leads to 
 <span style="color: darkorange">|50|0|32|1|1|1|0|159|31|129|129|20|60|0|7|129|31|26|100|3|0|0|0|0|0|0|0|0|0|2|0|111|</span>
 <span style="color:green">ACK from 35</span>
 
+|50|0|13|9|1|9|0|147|153|33|35|99|103|
+ACK from 35 
+|35|0|43|9|0|9|255|148|153|33|35|99|153|33|35|0|0|153|25|52|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|151|
+
 ## 63 - 243 interaction
 
 <span style="color:darkorange">|63|1|9|202|160|1|0|0|99|</span>
@@ -297,6 +301,8 @@ REQUESTED PUMP PWM -> I THINK IT IS REQUESTED PWM BECAUSE WHEN VALUE IS 100 (PWM
 Message similar to the previous one with added 8 byte.
 
 |35|240|8|9|224|9|255|231| -> SENT WHEN THERE IS NO COMMUNICATION WITH OUDOOR UNIT ? LOOKS LIKE A DISCOVERY MESSAGE
+
+|35|0|43|9|0|9|255|148|153|33|35|99|153|33|35|0|0|153|25|52|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|151|
 
 ### ADDRESS 47
 
